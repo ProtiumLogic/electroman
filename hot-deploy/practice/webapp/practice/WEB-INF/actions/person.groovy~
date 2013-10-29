@@ -1,0 +1,1 @@
+context.persons = delegator.findList("Person","PERSON", null, null, null, null, false);

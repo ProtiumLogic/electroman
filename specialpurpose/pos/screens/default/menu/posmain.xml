@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<XPage>
+    <Components>
+        <!-- line 1 -->
+        <Button name="menuMain" x="54" y="0" w="100" h="60" style="posCustomButton" content="MAIN" alignment="Center"/>
+        <Button name="menuMgr" x="186" y="0" w="100" h="60" style="posCustomButton" content="MGR" alignment="Center"/>
+        <Button name="menuPay" x="450" y="0" w="100" h="60" style="posCustomButton" content="PAY" alignment="Center"/>
+	 <Button name="menuPromo" x="318" y="0" w="100" h="60" style="posButton" content="QUOTE" alignment="Center"/> 
+      <!--  <Button name="menuConfigItem" x="408" y="0" w="100" h="60" style="posButton" content="CONFIG_ITEM" alignment="Center"/>
+        <Button name="menuSku" x="510" y="0" w="100" h="60" style="posButton" content="SKU" alignment="Center"/>   -->
+
+        <!-- line 2 -->
+<!--    <Button name="SKU.GZ-1001" x="0" y="62" w="100" h="60" style="skuButtonGizmo" content="GIZMO 1" alignment="Center"/>
+        <Button name="SKU.GZ-5005" x="102" y="62" w="100" h="60" style="skuButtonGizmoPurple" content="GZ PURPLE" alignment="Center"/>
+        <Button name="SKU.GZ-2644" x="204" y="62" w="100" h="60" style="skuButtonGizmo" content="GZ-2644" alignment="Center"/>
+        <Button name="SKU.GZ-2002" x="306" y="62" w="100" h="60" style="skuButtonGizmo" content="GZ-2002" alignment="Center"/>
+        <Button name="SKU.GZ-7000" x="408" y="62" w="100" h="60" style="skuButtonGizmo" content="GZ-7000" alignment="Center"/>
+        <Button name="SKU.WG-5569" x="510" y="62" w="100" h="60" style="skuButtonWidget" content="WIDGET 1" alignment="Center"/>   -->
+
+	    	    	                       
+        <!-- line 3 -->
+<!--    <Button name="" x="0" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="102" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="204" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="306" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="408" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="510" y="124" w="100" h="60" style="posButton" content="" alignment="Center"/>    -->
+
+        <!-- line 4 -->
+<!--    <Button name="" x="0" y="186" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="SKU.Watch" x="102" y="186" w="100" h="60" style="skuButtonGizmo" content="Watch" alignment="Center"/>
+        <Button name="SKU.CoolDrinks" x="204" y="186" w="100" h="60" style="skuButtonGizmo" content="Cool Drinks" alignment="Center"/>
+        <Button name="SKU.StudentCombo" x="306" y="186" w="100" h="60" style="skuButtonGizmo" content="Student Combo" alignment="Center"/>
+        <Button name="SKU.KFCSpecialCombo" x="408" y="186" w="100" h="60" style="skuButtonGizmo" content="KFC Special Combo" alignment="Center"/>
+        <Button name="SKU.TV-Pack" x="510" y="186" w="100" h="60" style="skuButtonGizmo" content="TV-Pack" alignment="Center"/>    -->
+       <Panel name="facilityPanel" x="40" y="80" w="526" h="300" style="facility" border="2">
+        	<Label name="facilityLabel" x="90" y="20" w="100" h="20" content="Facility" style="banner"/>
+        	<Label name="ATPLabel" x="375" y="20" w="200" h="20" content="Stock Level" style="banner"/>
+			<RadioButton w="300" x="70" y="80" h="20" content="Show Room" name="showRoom" style="question/response"/>
+	    	<RadioButton w="300" x="70" y="120" h="20" content="Display Location" name="displayLocation" style="question/response"/>
+	    	<RadioButton w="300" x="70" y="160" h="20" content="Back Door" name="backStore" style="question/response"/>	                       
+	    	<RadioButton w="300" x="70" y="200" h="20" content="Main WareHouse" name="mainWareHouse" style="question/response"/>
+	    	<RadioButton w="300" x="70" y="240" h="20" content="Consignee" name="consignee" style="question/response"/>	   
+	    		   
+			<Edit name="showRoomStock"  x="400" y="75" w="60" h="30" style="facility" alignment="Center"/>
+			<Edit name="displayLocationStock"  x="400" y="115" w="60" h="30" style="facility" alignment="Center"/>
+			<Edit name="backStoreStock" x="400" y="155" w="60" h="30" style="facility" alignment="Center"/>
+			<Edit name="mainWareHouseStock" x="400" y="195" w="60" h="30" style="facility" alignment="Center"/>
+			<Edit name="consigneeStock" x="400" y="235" w="60" h="30" style="facility" alignment="Center"/>
+			
+		<!-- 	<Button name="next" x="355" y="248" w="140" h="40" content="NEXT ITEM" alignment="Center"/>  -->
+			<!--<Button name="menuNextItem" x="100" y="260" w="150" h="30" style="posButton" content="NEXT_ITEM" alignment="Center"/>-->
+				
+		</Panel>
+		<Panel name="quotePanel" x="40" y="80" w="526" h="250" border="2" style="">
+			<label name="quotationLabel" x="200" y="20" w="120" h="30" content="QUOTATION" style="quotation"/>
+			<label name="quoteIdLabel" x="125" y="95" w="120" h="20" content="Quote ID" style="quotelabel"/>
+			<Edit name="quoteId" x="275" y="90" w="120" h="30" style="quotelabel" allignment="Center"/>
+			<Button name="createOrder" x="230" y="180" w="60" h="35" style="quotelabel" content="ADD" allignment="Center"/>
+		</Panel>
+		
+		<!-- line 5 -->
+<!--    <Button name="SKU.GZ-1004" x="0" y="248" w="100" h="60" style="skuButtonGizmo" content="GZ-1004" alignment="Center"/>
+        <Button name="SKU.GZ-1005" x="102" y="248" w="100" h="60" style="skuButtonGizmo" content="GZ-1005" alignment="Center"/>
+        <Button name="SKU.GZ-8544" x="204" y="248" w="100" h="60" style="skuButtonGizmo" content="GZ-8544" alignment="Center"/>
+        <Button name="SKU.GZ-9290" x="306" y="248" w="100" h="60" style="skuButtonGizmo" content="GZ-9290" alignment="Center"/>
+        <Button name="SKU.WG-1111" x="408" y="248" w="100" h="60" style="skuButtonWidget" content="WG-1111" alignment="Center"/>
+        <Button name="SKU.PC001" x="510" y="248" w="100" h="60" style="skuButtonConfigurableItem" content="CONFIG PC" alignment="Center"/>    -->
+
+        <!-- line 6 -->
+<!--    <Button name="SKU.ENCHILADAS" x="0" y="310" w="100" h="60" style="skuButtonConfigurableItem" content="Enchiladas" alignment="Center"/>
+        <Button name="" x="102" y="310" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="204" y="310" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="306" y="310" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="408" y="310" w="100" h="60" style="posButton" content="" alignment="Center"/>
+        <Button name="" x="510" y="310" w="100" h="60" style="posButton" content="" alignment="Center"/>    -->
+
+    </Components>
+</XPage>

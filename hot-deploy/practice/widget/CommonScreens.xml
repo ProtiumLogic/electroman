@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    <screen name="main-decorator">
+        <!-- The main-decorator screen 'wraps' or 'decorates' all of the screens in the
+            practice component. It is also decorated - by the GlobalDecorator screen. -->
+        <section>
+            <actions>
+                <!-- base/top/most specific map first, then more common map added for shared labels.
+                    Setting things up this way enables a component to redefine the more common
+                    UI labels. -->
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PracticeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!-- The layoutSettings field is a Map that is used to pass variables and layout
+                    information to the GlobalDecorator and any templates that it uses. -->
+                <set field="layoutSettings.companyName" from-field="uiLabelMap.PracticeCompanyName" global="true"/>
+                <set field="activeApp" value="practice" global="true"/>
+                <!-- Default (main) javascript files -->
+                <set field="layoutSettings.javaScripts[+0]" value="/images/prototypejs/validation.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/prototypejs/prototype.js" global="true"/>
+                <set field="applicationMenuName" value="PracticeAppBar" global="true"/>
+                <set field="applicationMenuLocation" value="component://practice/widget/PracticeMenus.xml" global="true"/>
+            </actions>
+            <widgets>
+                <include-screen name="GlobalDecorator" location="component://common/widget/CommonScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonPracticeDecorator">
+        <section>
+            <widgets>
+                <decorator-screen name="main-decorator">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>    

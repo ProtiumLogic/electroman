@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">      
+
+    <menu name="PracticeAppBar" default-menu-item-name="main" id="app-navigation" type="simple" title="Jaison's Practice Application"
+        default-selected-style="selected" selected-menuitem-context-field-name="headerItem">
+        <menu-item name="main" title="Jaison-Main"><link target="main"/></menu-item>
+        <menu-item name="person" title="Jaison-Person"><link target="Person"/></menu-item>
+        <menu-item name="personForm" title="Person Form"><link target="PersonForm"/></menu-item>
+        <menu-item name="events" title="Events"><link target="Events"/></menu-item>
+        <menu-item name="eca" title="ECA"><link target="Eca"/></menu-item>
+        <menu-item name="serviceGroup" title="Service Group"><link target="ServiceGroup"/></menu-item>
+        <menu-item name="interface" title="Interface"><link target="Interface"/></menu-item>
+        <menu-item name="ajax" title="Ajax"><link target="Ajax"/></menu-item>
+    </menu>
+    
+    <menu name="EventMenu" default-menu-item-name="eventMinilang" default-selected-style="selected" 
+         type="simple" menu-container-style="button-bar button-style-1" selected-menuitem-context-field-name="headerItem">
+         <menu-item name="eventMinilang" title="Create Person --- Event MiniLang">
+             <link target="CreatePracticePersonEventM"/>
+         </menu-item>
+         <menu-item name="eventJava" title="Create Person --- Event Java">
+             <link target="CreatePracticePersonEventJ"/>
+         </menu-item>    
+     </menu>
+    
+    <menu name="EcaMenu" default-menu-item-name="seca" default-selected-style="selected" 
+         type="simple" menu-container-style="button-bar button-style-1" selected-menuitem-context-field-name="headerItem">
+         <menu-item name="seca" title="Create Person --- SECA">
+             <link target="Seca"/>
+         </menu-item>
+         <menu-item name="eeca" title="Create Person --- EECA">
+             <link target="Eeca"/>
+         </menu-item>    
+     </menu>
+</menus>

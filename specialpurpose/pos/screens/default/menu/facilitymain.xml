@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<XPage class="org.ofbiz.pos.screen.PosScreen">
+  <Components>
+        <Label name="ATPLabel" x="290" y="80" w="100" h="20" content="Stock Level" style="banner"/>
+		<RadioButton w="200" x="80" y="120" h="20" content="EM-WareHouse1" name="emWareHouese1" style="question/response"/>
+	    <RadioButton w="200" x="80" y="180" h="20" content="EM-WareHouse2" name="emWareHouese2" style="question/response"/>
+	    <RadioButton w="200" x="80" y="240" h="20" content="EM-WareHouse3" name="emWareHouese3" style="question/response"/>	                       
+	    <RadioButton w="200" x="80" y="300" h="20" content="EM-WareHouse4" name="emWareHouese4" style="question/response"/>	                       
+		<Edit name="stocklevel_1"  x="300" y="110" w="50" h="30" style="editAndList"/>
+		<Edit name="stocklevel_2"  x="300" y="170" w="50" h="30" style="editAndList"/>
+		<Edit name="stocklevel_3"  x="300" y="230" w="50" h="30" style="editAndList"/>
+		<Edit name="stocklevel_4"  x="300" y="290" w="50" h="30" style="editAndList"/>
+   </Components>
+</Xpage>

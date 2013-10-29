@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file.-->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+    <description>Practice Component Site Configuration File</description>
+    
+    <protect view="Person"/>
+    <!-- Request Mappings -->
+    <request-map uri="main">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
+    <request-map uri="Person">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="Person"/>
+    </request-map>
+    <request-map uri="PersonForm">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="PersonForm"/>
+    </request-map>
+    <request-map uri="Events">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="CreatePracticePersonEventM"/>
+    </request-map>
+    <request-map uri="CreatePracticePersonEventM">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="CreatePracticePersonEventM"/>
+    </request-map>
+    <request-map uri="CreatePracticePersonEventJ">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="CreatePracticePersonEventJ"/>
+    </request-map>
+    <request-map uri="Eca">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="Seca"/>
+    </request-map>
+    <request-map uri="Seca">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="Seca"/>
+    </request-map>
+    <request-map uri="Eeca">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="Eeca"/>
+    </request-map>
+    <request-map uri="ServiceGroup">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="ServiceGroup"/>
+    </request-map>
+    <request-map uri="Interface">
+        <security https="false" auth="true"/>
+        <response name="success" type="view" value="Interface"/>
+    </request-map>
+    <request-map uri="createPracticePerson">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createPracticePerson"/>
+        <response name="success" type="view" value="PersonForm"/>
+        <response name="error" type="view" value="PersonForm"/>
+    </request-map>
+    <request-map uri="updatePracticePerson">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="updatePracticePerson"/>
+        <response name="success" type="view" value="PersonForm"/>
+        <response name="error" type="view" value="PersonForm"/>
+    </request-map>
+    <request-map uri="deletePracticePerson">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="deletePracticePerson"/>
+        <response name="success" type="view" value="PersonForm"/>
+        <response name="error" type="view" value="PersonForm"/>
+    </request-map>
+    
+    <request-map uri="createPracticePersonSimpleEvent">
+        <security https="true" auth="true"/>
+        <event type="simple" path="org/hotwax/practice/PracticeEvents.xml" invoke="createPracticePersonSimpleEvent"/>
+        <response name="success" type="view" value="CreatePracticePersonEventM"/>
+        <response name="error" type="view" value="CreatePracticePersonEventM"/>
+    </request-map>
+    <request-map uri="createPracticePersonJavaEvent">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.hotwax.practice.PracticeEvents" invoke="createPracticePersonJavaEvent"/>
+        <response name="success" type="view" value="CreatePracticePersonEventJ"/>
+        <response name="error" type="view" value="CreatePracticePersonEventJ"/>
+    </request-map>
+    <request-map uri="partyGroup">
+        <event type="service" invoke="partyGroup"/>
+        <response name="success" type="view" value="ServiceGroup"/>
+        <response name="error" type="view" value="ServiceGroup"/>
+    </request-map>
+    <request-map uri="createPracticePersonInterfaceService">
+        <event type="service" invoke="createPracticePersonInterfaceService"/>
+        <response name="success" type="view" value="Interface"/>
+        <response name="error" type="view" value="Interface"/>
+    </request-map>
+    <request-map uri="Ajax">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="PersonFormByAjax"/>
+    </request-map>
+    <request-map uri="createPracticePersonByAjax">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createPracticePerson"/>
+        <response name="success" type="request" value="json"/>
+        <response name="error" type="request" value="json"/>
+    </request-map>
+    <request-map uri="UpdatedPersonList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="UpdatedPersonList"/>
+    </request-map>
+
+    <!-- View Mappings -->
+    <view-map name="main" type="screen" page="component://practice/widget/PracticeScreens.xml#Main"/>
+    <view-map name="Person" type="screen" page="component://practice/widget/PracticeScreens.xml#Person"/>
+    <view-map name="PersonForm" type="screen" page="component://practice/widget/PracticeScreens.xml#PersonForm"/>
+    <view-map name="Events" type="screen" page="component://practice/widget/PracticeScreens.xml#Events"/>
+    <view-map name="CreatePracticePersonEventM" type="screen" page="component://practice/widget/PracticeScreens.xml#CreatePracticePersonEventM"/>
+    <view-map name="CreatePracticePersonEventJ" type="screen" page="component://practice/widget/PracticeScreens.xml#CreatePracticePersonEventJ"/>
+    <view-map name="Seca" type="screen" page="component://practice/widget/PracticeScreens.xml#Seca"/>
+    <view-map name="Eeca" type="screen" page="component://practice/widget/PracticeScreens.xml#Eeca"/>
+    <view-map name="ServiceGroup" type="screen" page="component://practice/widget/PracticeScreens.xml#ServiceGroup"/>
+    <view-map name="Interface" type="screen" page="component://practice/widget/PracticeScreens.xml#Interface"/>
+    <view-map name="PersonFormByAjax" type="screen" page="component://practice/widget/PracticeScreens.xml#PersonFormByAjax"/>
+    <view-map name="UpdatedPersonList" type="screen" page="component://practice/widget/PracticeScreens.xml#UpdatedPersonList"/>
+</site-conf>

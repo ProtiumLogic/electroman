@@ -1,0 +1,30 @@
+9
+
+dir
+0
+http://svn.apache.org/repos/asf/ofbiz/trunk/hot-deploy/practice/src/org/hotwax/practice
+http://svn.apache.org/repos/asf
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+PracticeEvents.java
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+

@@ -1,0 +1,1358 @@
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="OrderPurchaseReportOptions">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReports"/>
+                <set field="headerItem" value="reports"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="salesReportDetails" />
+                        <include-screen name="OrderReportRecievedByGoods" />
+                        <include-screen name="StockReport"/>
+						<include-screen name="orderSalesSummary"/>
+						<include-screen name="cashierReport"/>
+						<include-screen name="productDetails" />
+						<include-screen name="SupplierCreditNote" />
+						<include-screen name="OrderReturnReport"/>
+						<include-screen name="productLifeCycle"/>
+
+
+                       <!-- <include-portal-page id="OrderReportPage"/>-->
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderReportSalesByStore">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="${uiLabelMap.OrderReportSalesByStore}">
+                    <include-form name="SalesByStoreReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderReportOpenOrderItems">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="${uiLabelMap.OrderReportOpenOrderItems}">
+                    <include-form name="OpenOrderItemsReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderReportPurchasesByOrganization">
+        <section>
+            <actions>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="${uiLabelMap.OrderReportPurchasesByOrganization}">
+                    <include-form name="PurchasesByOrganizationReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderReportPurchasesByProduct">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="logoImageUrl" value="/images/ofbiz_logo.gif"/>
+            </actions>
+            <widgets>
+                <screenlet title="${uiLabelMap.OrderReportPurchasesByProduct}">
+                    <include-form name="OrderPurchaseProductOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    
+      <!-- goods recieved -->
+     <screen name="OrderReportRecievedByGoods">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Order Recieved Goods Report'}">
+                    <include-form name="OrderGoodsRecievedOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- #######sales Report Details -->
+     <screen name="salesReportDetails">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Order Report of Sales'}">
+                    <include-form name="salesReportOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    <screen name="productDetails">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Product Price Report'}">
+                    <include-form name="productDetailsOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="SupplierCreditNote">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="Supplier Credit Note">
+                    <include-form name="CreditNote" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+
+    <screen name="OrderReportPurchasesByPaymentMethod">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="${uiLabelMap.OrderReportPurchasesByPaymentMethod}">
+                    <include-form name="OrderPurchasePaymentOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+    
+    <!--New Screen-->
+    <screen name="SalesReport">
+        <section>
+            <actions>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="Sales Report">
+                    <include-form name="SalesReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="NetBeforeOverheadReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="Net Before Overhead Report">
+                    <include-form name="NetBeforeOverheadReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ProductDemandReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+            <!--
+                <screenlet title="Product Demand Report">
+                    <include-form name="ProductDemandReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            -->
+            </widgets>
+        </section>
+    </screen> 
+
+    <screen name="OrderPurchaseReportPayment">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportPurchasesByPaymentMethod"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderPurchasePaymentSummary" list="orderPurchasePaymentSummaryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productStoreId" operator="equals" from-field="parameters.productStoreId" ignore-if-empty="true"/>
+                        <condition-expr field-name="originFacilityId" operator="equals" from-field="parameters.originFacilityId" ignore-if-empty="true"/>
+                        <condition-expr field-name="terminalId" operator="equals" from-field="parameters.terminalId" ignore-if-empty="true"/>
+                        <condition-expr field-name="statusId" operator="equals" from-field="parameters.statusId" ignore-if-empty="true"/>
+                        <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                        <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                    </condition-list>
+                    <select-field field-name="productStoreId"/>
+                    <select-field field-name="originFacilityId"/>
+                    <select-field field-name="terminalId"/>
+                    <select-field field-name="statusId"/>
+                    <select-field field-name="paymentMethodTypeId"/>
+                    <select-field field-name="description"/>
+                    <select-field field-name="maxAmount"/>
+                    <order-by field-name="productStoreId"/>
+                    <order-by field-name="originFacilityId"/>
+                    <order-by field-name="terminalId"/>
+                    <order-by field-name="paymentMethodTypeId"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/OrderPurchaseReportPayment.fo.ftl"/></xsl-fo>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="OrderPurchaseReportProduct">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportPurchasesByProduct"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderPurchaseProductSummary" list="orderPurchaseProductSummaryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productStoreId" operator="equals" from-field="parameters.productStoreId" ignore-if-empty="true"/>
+                        <condition-expr field-name="orderTypeId" operator="equals" from-field="parameters.orderTypeId" ignore-if-empty="true"/>
+                        <condition-expr field-name="originFacilityId" operator="equals" from-field="parameters.originFacilityId" ignore-if-empty="true"/>
+                        <condition-expr field-name="terminalId" operator="equals" from-field="parameters.terminalId" ignore-if-empty="true"/>
+                        <condition-expr field-name="statusId" operator="equals" from-field="parameters.statusId" ignore-if-empty="true"/>
+                        <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                        <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                    </condition-list>
+                    <select-field field-name="productStoreId"/>
+                    <select-field field-name="originFacilityId"/>
+                    <select-field field-name="terminalId"/>
+                    <select-field field-name="statusId"/>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="quantity"/>
+                    <select-field field-name="cancelQuantity"/>
+                    <order-by field-name="productStoreId"/>
+                    <order-by field-name="originFacilityId"/>
+                    <order-by field-name="terminalId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/OrderPurchaseReportProduct.fo.ftl"/></xsl-fo>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- generates the pdf for report of sales by store and customer, grouped by product -->
+    <screen name="SalesByStoreReport">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportSalesByStore"/>
+                <set field="toPartyId" from-field="parameters.toPartyId"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderReportSalesGroupByProduct" list="productReportList">
+                    <condition-list combine="and">
+<!-- this can use the other view, so long as the filter is by SALES_ORDER and fromPartyId = ProductStore.payToPartyId if provided -->
+                        <condition-expr field-name="productStoreId" operator="equals" from-field="parameters.productStoreId" ignore-if-empty="true"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="parameters.toPartyId" ignore-if-empty="true"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BILL_TO_CUSTOMER"/>
+                        <condition-expr field-name="orderTypeId" operator="equals" value="SALES_ORDER"/>
+<!-- possible bug: using from-field="parameters.orderStatusId" did not work for the following line -->
+                        <condition-expr field-name="orderStatusId" operator="equals" value="${parameters.orderStatusId}" ignore-if-empty="true"/>
+                        <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                        <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                    </condition-list>
+<!-- note that we need to explicitly identify the fields to select, otherwise the query will include fields that can't logically be grouped -->
+                    <select-field field-name="productStoreId"/>
+                    <select-field field-name="storeName"/>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="quantityOrdered"/>
+                    <select-field field-name="unitPrice"/>
+                    <select-field field-name="quantityOnHandTotal"/>
+
+                    <order-by field-name="storeName"/>
+                    <order-by field-name="internalName"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/SalesByStoreReport.fo.ftl"/></xsl-fo>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- generates report of open order items -->
+    <screen name="OpenOrderItemsReport">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromOrderDate" from-field="parameters.fromOrderDate" type="Timestamp"/>
+                <set field="thruOrderDate" from-field="parameters.thruOrderDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/OpenOrderItemsReport.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.OrderReportOpenOrderItems} - ${productStore.storeName}">
+                            <include-form name="OpenOrderItemsList" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.OrderReportOpenOrderItems}">
+                            <include-form name="OpenOrderItemsTotal" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+        <screen name="OrderSalesReportCSV">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderSalesReport.groovy"/>
+            </actions>
+            <widgets>
+             <platform-specific>
+              <html><html-template location="component://order/webapp/ordermgr/reports/orderSalesReport.ftl"/></html>
+             </platform-specific>
+             </widgets>
+        </section>
+    </screen>
+    <screen name="OrderSalesReport">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderSalesReport.groovy"/>
+            </actions>
+            <widgets>
+            <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderSalesReport.groovy"/>
+            </actions>
+           <widgets>
+             <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					         <platform-specific>
+                    		<xsl-fo><html-template location="component://order/webapp/ordermgr/reports/orderSalesProductReport.fo.ftl"/></xsl-fo>
+                			</platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+                </widgets>
+        </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- generates the pdf for orderreport of purchases by organization, grouped by product -->
+    <screen name="PurchasesByOrganizationReport">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportPurchasesByOrganization"/>
+                <set field="toPartyId" from-field="parameters.toPartyId"/>
+                <set field="fromPartyId" from-field="parameters.fromPartyId"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderReportPurchasesGroupByProduct" list="productReportList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="toPartyId" operator="equals" from-field="parameters.toPartyId" ignore-if-empty="true"/>
+                        <condition-expr field-name="toRoleTypeId" operator="equals" value="BILL_TO_CUSTOMER"/>
+                        <condition-expr field-name="fromPartyId" operator="equals" from-field="parameters.fromPartyId" ignore-if-empty="true"/>
+                        <condition-expr field-name="fromRoleTypeId" operator="equals" value="BILL_FROM_VENDOR"/>
+                        <condition-expr field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+                        <condition-expr field-name="orderStatusId" operator="equals" value="${parameters.orderStatusId}" ignore-if-empty="true"/>
+                        <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                        <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                    </condition-list>
+                    <!-- note that we need to explicitly identify the fields to select, otherwise the query will include fields that can't logically be grouped -->
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="quantity"/>
+                    <select-field field-name="unitPrice"/>
+                    <order-by field-name="internalName"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/PurchasesByOrganizationReport.fo.ftl"/></xsl-fo>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="SalesOrderReport">
+        <section>
+            <actions>
+                <entity-condition entity-name="SalesOrderItemStarSchema" list="SalesReportList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                        <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <xml><html-template location="component://order/webapp/ordermgr/reports/SalesReport.rptdesign"/></xml>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="NetBeforeOverheadOrderReport">
+        <section>
+            <widgets>
+                <platform-specific>
+                    <xml><html-template location="component://order/webapp/ordermgr/reports/NetBeforeOverheadReport.rptdesign"/></xml>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ProductDemandOrderReport ">
+        <section>
+            <widgets>
+                <platform-specific>
+                    <xml><html-template location="component://order/webapp/ordermgr/reports/ProductDemandReport.rptdesign"/></xml>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- Sale Order By Referrer -->
+    <screen name="SaleOrdersByReferrerReport">
+        <section>
+            <widgets>
+            <!--
+                <screenlet title="Sale Orders by Referrer Report">
+                    <include-form name="OrderByReferrer" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+             -->
+            </widgets>
+        </section>
+    </screen>
+    <!-- Sale Order By Channel -->
+    <screen name="SaleOrdersByChannelReport">
+        <section>
+            <widgets>
+            <!--
+                <screenlet title="Sale Orders By Channel Report">
+                    <include-form name="SaleOrdersByChannel" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+             -->
+            </widgets>
+        </section>
+    </screen>
+    <!-- Sale Order with Discount Code -->
+    <screen name="SaleOrderDiscountCodeReport">
+        <section>
+            <widgets>
+            <!--
+                <screenlet title="Sale Orders Discount Code Report">
+                    <include-form name="SaleOrderDiscountCode" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+             -->
+            </widgets>
+        </section>
+    </screen>
+    <!-- Last Three Months Sales Report -->
+    <screen name="Last3MonthsSalesReport">
+        <section>
+            <widgets>
+            <!--
+                <screenlet title="Last Three Months Sales Report">
+                    <include-form name="Last3MonthsSalesReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+             -->
+            </widgets>
+        </section>
+    </screen>
+    <!-- Coupon Sales Report -->
+    <screen name="CouponSalesReport">
+        <section>
+            <widgets>
+            <!--
+                <screenlet title="Coupon Sales Report">
+                    <include-form name="CouponSalesReport" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+             -->
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    <!-- goods recieved -->
+    <screen name="OrderGoodsReportRecieved">
+        <section>
+            <actions>
+            	<set field="pageLayoutName" value="main-page-landscape"/>	<!--LANDSCAPE-->
+            	
+            	
+                <set field="titleProperty" value="OrderReportRecievedByGoods"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderHeaderItemAndRoles" list="orderPurchaseProductSummaryList">
+                  <condition-list combine="and">
+                  <condition-expr field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+                  <condition-expr field-name="roleTypeId" operator="equals" value="SUPPLIER_AGENT"/>
+                  <condition-expr field-name="orderId" operator="equals" from-field="parameters.orderId" ignore-if-empty="true"/>
+                  <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                  <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                  </condition-list>
+                  <order-by field-name="orderId"/>                    
+                </entity-condition>
+               <!-- <script location="component://product/webapp/facility/WEB-INF/actions/inventory/PurchaseInventoryReport.groovy"/>-->
+            </actions>
+            <widgets>
+             <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					            <platform-specific>
+				                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/OrderGoodsReportRecieved.fo.ftl"/></xsl-fo>
+				                </platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+             </widgets>
+        </section>
+    </screen>
+	 
+<screen name="OrderGoodsReportRecievedcsv">
+        <section>
+            <actions>
+            	<set field="pageLayoutName" value="main-page-landscape"/>	<!--LANDSCAPE-->
+                <set field="titleProperty" value="OrderReportRecievedByGoods"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderHeaderItemAndRoles" list="orderPurchaseProductSummaryList">
+                  <condition-list combine="and">
+                  <condition-expr field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+                  <condition-expr field-name="roleTypeId" operator="equals" value="SUPPLIER_AGENT"/>
+                  <condition-expr field-name="orderId" operator="equals" from-field="parameters.orderId" ignore-if-empty="true"/>
+                  <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                  <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                  </condition-list>
+                  <order-by field-name="orderId"/>                    
+                </entity-condition>
+               <!-- <script location="component://product/webapp/facility/WEB-INF/actions/inventory/PurchaseInventoryReport.groovy"/>-->
+            </actions>
+            <widgets>
+            	<section>
+            		<widgets>
+                <platform-specific><html><html-template location="component://order/webapp/ordermgr/reports/OrderGoodsReportRecievedcsv.ftl"/>
+                </html></platform-specific>
+            		</widgets>
+        		</section>
+        		</widgets>
+        </section>
+    </screen>
+
+	
+    <screen name="ProductReport1">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="ProductSummary" list="productSummaryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productId" operator="equals" from-field="parameters.productId" ignore-if-empty="true"/>
+                    </condition-list>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="brandName"/>
+                    <select-field field-name="price"/>
+                    <select-field field-name="productPriceTypeId"/>
+                    <select-field field-name="productCategoryId"/>
+                    <select-field field-name="prodCatalogId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+             <widgets>
+              <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					            <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/ProductReport.fo.ftl"/></xsl-fo>
+                </platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+               
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ProductReportCSV1">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="ProductSummary" list="productSummaryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productId" operator="equals" from-field="parameters.productId" ignore-if-empty="true"/>
+                    </condition-list>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="brandName"/>
+                    <select-field field-name="price"/>
+                    <select-field field-name="productPriceTypeId"/>
+                    <select-field field-name="productCategoryId"/>
+                    <select-field field-name="prodCatalogId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+             <widgets>
+				<platform-specific>
+                    <html><html-template location="component://order/webapp/ordermgr/reports/ProductReportCSV.ftl"/></html>
+                </platform-specific>
+	            </widgets>
+        </section>
+    </screen>
+    
+    
+    
+     <screen name="StockReportDetails">
+       <section>
+            <actions>
+                <set field="titleProperty" value="StockReport"/>
+  
+           <entity-condition entity-name="StockReportSummary" list="productReportList">
+                    <condition-list combine="and">
+		                    <condition-expr field-name="prodCatalogId" operator="equals" from-field="parameters.catalog" ignore-if-null="true"/>
+		                    <condition-expr field-name="productCategoryId" operator="equals" from-field="parameters.category" ignore-if-null="true"/>
+		                     <!--<condition-expr field-name="   " operator="equals" from-field="parameters.subCategory" ignore-if-null="true"/>-->
+		                     <condition-expr field-name="facilityId" operator="equals" from-field="parameters.location" ignore-if-null="true"/>
+                     </condition-list>
+                      <select-field field-name="prodCatalogId"/>
+                      <select-field field-name="productCategoryId"/>
+                      <select-field field-name="productId"/>
+                      <!--<select-field field-name="availableToPromiseTotal"/>-->
+                      <select-field field-name="facilityId"/>
+                      <!--<select-field field-name="quantityOnHandTotal"/>-->
+                </entity-condition>
+            </actions>
+            <widgets>
+             <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					         <platform-specific>
+                    		<xsl-fo><html-template location="component://order/webapp/ordermgr/reports/StockReport.fo.ftl"/></xsl-fo>
+                			</platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+                </widgets>
+        </section>
+            
+    </screen>
+	<screen name="OrderReturnReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Sales Returns Report'}">
+                    <include-form name="returnSalesReportOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="OrderReturnCSVReport">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/OrderReturnReport.groovy"/>
+            </actions>
+            <widgets>
+             <platform-specific>
+              <html><html-template location="component://order/webapp/ordermgr/reports/orderReturnReport.ftl"/></html>
+             </platform-specific>
+             </widgets>
+        </section>
+    </screen>
+                
+    
+     <screen name="StockReportDetailsCSV">
+       <section>
+            <actions>
+        
+                <set field="titleProperty" value="StockReport"/>
+               <set field="QuantityOnHandTotal" from-field="parameters.Productid"/>
+               <set field="AvailableToPromiseTotal" from-field="parameters.Productid"/>
+               <set field="productId" from-field="parameters.productId"/>
+                            
+               <!-- <set field="toPartyId" from-field="parameters.toPartyId"/>
+                <set field="fromPartyId" from-field="parameters.fromPartyId"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>-->
+               
+
+                <entity-condition entity-name="StockReportSummary" list="productReportList">
+                    <condition-list combine="and">
+                               </condition-list>
+                      
+                      <!--<select-field field-name="prodCatalogId"/>
+                        <select-field field-name="productCategoryId"/>
+                       <select-field field-name="productId"/>
+                      <select-field field-name="availableToPromiseTotal"/>
+                    <select-field field-name="facilityId"/>
+                   <select-field field-name="quantityOnHandTotal"/>-->
+                      
+                    <select-field field-name="partyId"/>
+                    <select-field field-name="productId"/>
+                 
+
+
+
+
+
+
+
+
+                  
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific>
+                   <html><html-template location="component://order/webapp/ordermgr/reports/StockReportCsv.ftl"/> </html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+     <screen name="StockReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="Stock Report">
+                    <include-form name="StockReportForms" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+	
+	<!-- ###Sales Summary Screen -->
+	<screen name="orderSalesSummary">
+		<section>
+			<actions>
+				<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                
+			</actions>
+			<widgets>
+				<screenlet title="${'Overall Sales Report'}">
+					<include-form name="salesSummaryReportOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+				</screenlet>
+			</widgets>
+		</section>
+	</screen> 
+		<screen name="productLifeCycle">
+		<section>
+			<actions>
+				<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+			</actions>
+			<widgets>
+				<screenlet title="${'Product Opening Balance Report'}">
+					<include-form name="productLifeCycle" location="component://order/widget/ordermgr/ReportForms.xml"/>
+				</screenlet>
+			</widgets>
+		</section>
+	</screen> 
+	
+	<screen name="SalesSummaryReport">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="ProductSummary" list="productSummaryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productId" operator="equals" from-field="parameters.productId" ignore-if-empty="true"/>
+                    </condition-list>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="brandName"/>
+                    <select-field field-name="price"/>
+                    <select-field field-name="productPriceTypeId"/>
+                    <select-field field-name="productCategoryId"/>
+                    <select-field field-name="prodCatalogId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+             <widgets>
+              <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					            <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/orderSalesSummary.ftl"/></xsl-fo>
+                </platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+               
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="SalesSummaryReportCSV">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="fromOrderDate" from-field="parameters.fromOrderDate" type="Timestamp"/>
+                <set field="thruOrderDate" from-field="parameters.thruOrderDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/OrderSalesSummaryReport.groovy"/>
+    
+            </actions>
+             <widgets>
+				<platform-specific>
+                    <html><html-template location="component://order/webapp/ordermgr/reports/orderSalesSummary.ftl"/></html>
+                </platform-specific>
+	            </widgets>
+        </section>
+    </screen>
+	
+	    <!-- POS Cashier Report -->
+    <screen name="cashierReport">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Cashier Report'}">
+                    <include-form name="cashierReportDetails" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CashierSummaryReport">
+        <section>
+            <actions>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+            </actions>
+            <widgets>
+            	<decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					         <platform-specific>
+                    		<xsl-fo><html-template location="component://order/webapp/ordermgr/reports/CashierSummaryReport.fo.ftl"/></xsl-fo>
+                			</platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+        <screen name="CashierInDetailReport">
+        <section>
+            <actions>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+               <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderCashierSalesReport.groovy"/>
+                
+            </actions>
+            <widgets>
+            	<decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					         <platform-specific>
+                    		<xsl-fo><html-template location="component://order/webapp/ordermgr/reports/CashierInDetailReport.fo.ftl"/></xsl-fo>
+                			</platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+        
+    </screen>
+    
+   <screen name="CashierSummaryReportCSV">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderCasheirSalesReport.groovy"/>
+                
+            </actions>
+            <widgets>
+             <platform-specific>
+              <html><html-template location="component://order/webapp/ordermgr/reports/cashierSummaryReport.ftl"/></html>
+             </platform-specific>
+             </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CashierInDetailReportCSV">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+               <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/orderSalesDetailReport.groovy"/>
+            </actions>
+            <widgets>
+             <platform-specific>
+              <html><html-template location="component://order/webapp/ordermgr/reports/cashierInDetailReport.ftl"/></html>
+             </platform-specific>
+             </widgets>
+        </section>
+    </screen>
+  <!-- Product price Details -->
+    <screen name="productDetails">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Product in details'}">
+                    <include-form name="productDetailsOptions1" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+	
+	    <screen name="ProductReport">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="ProductSummary" list="productSummaryList">
+                    <condition-list combine="and">
+                         <condition-expr field-name="prodCatalogId" operator="equals" from-field="parameters.catalog" ignore-if-empty="true"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" from-field="parameters.Category" ignore-if-empty="true"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" from-field="parameters.subCategory" ignore-if-empty="true"/>
+                        
+                        <condition-expr field-name="facilityId" operator="equals" from-field="parameters.location" ignore-if-empty="true"/>
+                  </condition-list>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="brandName"/>
+                    <select-field field-name="price"/>
+                    <select-field field-name="productPriceTypeId"/>
+                    <select-field field-name="productCategoryId"/>
+                    <select-field field-name="prodCatalogId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+             <widgets>
+              <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>	
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					            <platform-specific>
+                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/ProductPriceReport.fo.ftl"/></xsl-fo>
+                </platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CreditNote.pdf">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                                <script location="component://party/webapp/partymgr/WEB-INF/actions/party/SupplierProduct.groovy"/>
+                
+            </actions>
+             <widgets>
+              <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>	
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					         <platform-specific>
+                    			<xsl-fo><html-template location="component://order/webapp/ordermgr/reports/CreditNote.fo.ftl"/></xsl-fo>
+                			</platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+               
+            </widgets>
+        </section>
+    </screen>
+	
+    <screen name="ProductReportCSV">
+        <section>
+            <actions>
+                <set field="pageLayoutName" value="main-page-landscape"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                      <entity-condition entity-name="ProductSummary" list="productSummaryList">
+                    <condition-list combine="and">
+                         <condition-expr field-name="prodCatalogId" operator="equals" from-field="parameters.catalog" ignore-if-empty="true"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" from-field="parameters.Category" ignore-if-empty="true"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" from-field="parameters.subCategory" ignore-if-empty="true"/>
+                        <condition-expr field-name="facilityId" operator="equals" from-field="parameters.location" ignore-if-empty="true"/>
+                  </condition-list>
+                    <select-field field-name="productId"/>
+                    <select-field field-name="internalName"/>
+                    <select-field field-name="brandName"/>
+                    <select-field field-name="price"/>
+                    <select-field field-name="productPriceTypeId"/>
+                    <select-field field-name="productCategoryId"/>
+                    <select-field field-name="prodCatalogId"/>
+                    <order-by field-name="productId"/>
+                </entity-condition>
+            </actions>
+             <widgets>
+				<platform-specific>
+                    <html><html-template location="component://order/webapp/ordermgr/reports/ProductPriceReportCSV.ftl"/></html>
+                </platform-specific>
+	            </widgets>
+        </section>
+    </screen>
+	
+	
+	
+	<!-- Goods Received -->
+	
+	
+     <screen name="OrderReportRecievedByGoods">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <screenlet title="${'Order Recieved Goods Report'}">
+                    <include-form name="OrderGoodsRecievedOptions" location="component://order/widget/ordermgr/ReportForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+	
+	
+	<!-- Goods Received -->
+    
+	
+	<screen name="OrderGoodsReportRecieved">
+        <section>
+            <actions>
+            	<set field="pageLayoutName" value="main-page-landscape"/>	<!--LANDSCAPE-->
+            	
+            	
+                <set field="titleProperty" value="OrderReportRecievedByGoods"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderHeaderItemAndRoles" list="orderPurchaseProductSummaryList">
+                  <condition-list combine="and">
+                  <condition-expr field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+                  <condition-expr field-name="roleTypeId" operator="equals" value="SUPPLIER_AGENT"/>
+                  <condition-expr field-name="orderId" operator="equals" from-field="parameters.orderId" ignore-if-empty="true"/>
+                  <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                  <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                  </condition-list>
+                  <order-by field-name="orderId"/>                    
+                </entity-condition>
+               <!-- <script location="component://product/webapp/facility/WEB-INF/actions/inventory/PurchaseInventoryReport.groovy"/>-->
+            </actions>
+            <widgets>
+             <decorator-screen name="FoReportDecorator"  location="component://common/widget/CommonScreens.xml">
+            		<decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                          <widgets>
+					            <platform-specific>
+				                    <xsl-fo><html-template location="component://order/webapp/ordermgr/reports/OrderGoodsReportRecieved.fo.ftl"/></xsl-fo>
+				                </platform-specific>
+				          </widgets>
+                        </section>
+                    </decorator-section>
+                    
+                </decorator-screen>
+             </widgets>
+        </section>
+    </screen>
+	 
+<screen name="OrderGoodsReportRecievedcsv">
+        <section>
+            <actions>
+            	<set field="pageLayoutName" value="main-page-landscape"/>	<!--LANDSCAPE-->
+                <set field="titleProperty" value="OrderReportRecievedByGoods"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="OrderHeaderItemAndRoles" list="orderPurchaseProductSummaryList">
+                  <condition-list combine="and">
+                  <condition-expr field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+                  <condition-expr field-name="roleTypeId" operator="equals" value="SUPPLIER_AGENT"/>
+                  <condition-expr field-name="orderId" operator="equals" from-field="parameters.orderId" ignore-if-empty="true"/>
+                  <condition-expr field-name="orderDate" operator="greater-equals" from-field="parameters.fromOrderDate" ignore-if-null="true"/>
+                  <condition-expr field-name="orderDate" operator="less" from-field="parameters.thruOrderDate" ignore-if-null="true"/>
+                  </condition-list>
+                  <order-by field-name="orderId"/>                    
+                </entity-condition>
+               <!-- <script location="component://product/webapp/facility/WEB-INF/actions/inventory/PurchaseInventoryReport.groovy"/>-->
+            </actions>
+            <widgets>
+            	<section>
+            		<widgets>
+                <platform-specific><html><html-template location="component://order/webapp/ordermgr/reports/OrderGoodsReportRecievedcsv.ftl"/>
+                </html></platform-specific>
+            		</widgets>
+        		</section>
+        		</widgets>
+        </section>
+    </screen>
+	
+	
+	<screen name="SupplierProductLookup">
+	        <section>
+	            <condition>
+	                <if-service-permission service-name="catalogPermissionCheck" main-action="VIEW"/>
+	            </condition>
+	            <actions>
+	            	<set field="layoutSettings.javaScripts[+0]" value="/images/jquery/ui/js/jquery-ui-1.8.11.custom.min.js" global="true"/>
+	                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+	                <script location="component://party/webapp/partymgr/WEB-INF/actions/party/SupplierProduct.groovy"/>
+	            </actions>
+	            <widgets>
+	                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+	                    <decorator-section name="body">
+							<platform-specific>
+	                            <html><html-template location="component://order/webapp/ordermgr/reports/creditNoteLookup.ftl"/></html>
+	                        </platform-specific>
+	                    </decorator-section>
+	                </decorator-screen>
+	            </widgets>
+	        </section>
+	</screen>
+	<screen name="ProductLifeCycleCSV">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderReportOpenOrderItems"/>
+                <set field="headerItem" value="reports"/>
+                <set field="viewSize" value="${parameters.VIEW_SIZE}" default-value="20" type="Integer"/>
+                <set field="viewIndex" value="${parameters.VIEW_INDEX}" default-value="0" type="Integer"/>
+                <set field="fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <set field="thruDate" from-field="parameters.thruDate" type="Timestamp"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/reports/ProductLifeCycle.groovy"/>
+            </actions>
+            <widgets>
+             <platform-specific>
+              <html><html-template location="component://order/webapp/ordermgr/reports/productLifeCycle.ftl"/></html>
+             </platform-specific>
+             </widgets>
+        </section>
+    </screen>
+	
+<!-- END -->
+</screens>

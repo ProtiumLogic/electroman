@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <Party partyId="DemoUser" partyTypeId="PERSON"/>
+    <Person partyId="DemoUser" firstName="Practice" lastName="Person"/>
+    <PartyRole partyId="DemoUser" roleTypeId="VISITOR"/>
+
+    <ContactMech contactMechId="5000" contactMechTypeId="EMAIL_ADDRESS" infoString="practice.person@gmail.com"/>
+    <PartyContactMech partyId="DemoUser" contactMechId="5000" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMechPurpose partyId="DemoUser" contactMechId="5000" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2001-05-13 00:00:00.000"/>
+
+    <WebSite webSiteId="PRACTICE" siteName="Practice Application" visualThemeSetId="BACKOFFICE"/>
+
+</entity-engine-xml>

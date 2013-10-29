@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="ListPersons" type="list" list-name="persons" list-entry-name="person" target="updatePracticePerson">
+        <auto-fields-service service-name="updatePracticePerson" default-field-type="edit" map-name="person"/>
+        <field name="partyId"><hidden/></field>
+        <field name="deleteLink" title="" widget-style="buttontext">
+            <hyperlink target="deletePracticePerson" description="${uiLabelMap.CommonDelete}" also-hidden="false">
+                <parameter param-name="partyId" from-field="person.partyId"/>
+            </hyperlink>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}"><submit button-type="button"/></field>
+    </form>
+ 
+    <form name="CreatePerson" type="single" target="createPracticePerson">
+        <auto-fields-service service-name="createPracticePerson"/>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="CreatePersonSimpleForm" type="single" target="createPracticePersonSimpleEvent">
+        <auto-fields-service service-name="createPracticePerson"/>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="CreatePersonJavaForm" type="single" target="createPracticePerson">
+        <auto-fields-service service-name="createPracticePerson"/>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+
+    <form name="CreatePersonServiceGroup" type="single" target="partyGroup">
+        <auto-fields-service service-name="createPracticePerson"/>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="CreatePersonInterface" type="single" target="createPracticePersonInterfaceService">
+        <auto-fields-service service-name="createPracticePersonInterfaceService"/>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+
+</forms>

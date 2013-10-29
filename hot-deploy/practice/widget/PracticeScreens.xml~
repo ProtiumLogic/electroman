@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="Main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/>
+                <set field="titleProperty" value="PageTitlePracticeMain"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label text="${uiLabelMap.PracticeApplication}"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Person">
+        <section>
+            <actions>
+                <set field="headerItem" value="person"/>
+                <set field="titleProperty" value="PageTitlePracticePerson"/>
+                <script location="component://practice/webapp/practice/WEB-INF/actions/person.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://practice/webapp/practice/person.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PersonForm">
+        <section>
+            <actions>
+                <set field="headerItem" value="personForm"/>
+                <set field="titleProperty" value="PageTitlePracticePersonForm"/>
+                <entity-condition entity-name="Person" list="persons"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label text="Person List" style="h2"/>
+                        <include-form name="ListPersons" location="component://practice/widget/PracticeForms.xml"/>
+                        <label text="New Person" style="h2"/>
+                        <include-form name="CreatePerson" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CreatePracticePersonEventM">
+        <section>
+            <actions>
+                <set field="headerItem" value="eventMinilang"/>
+                <set field="titleProperty" value="PageTitleSimpleEventForms"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-menu location="component://practice/widget/PracticeMenus.xml" name="EventMenu"/>
+                        <label text="New Person --- Simple Event" style="h1"/>
+                        <include-form name="CreatePersonSimpleForm" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>        
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CreatePracticePersonEventJ">
+        <section>
+            <actions>
+                <set field="headerItem" value="eventJava"/>
+                <set field="titleProperty" value="PageTitleJavaEventForms"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-menu location="component://practice/widget/PracticeMenus.xml" name="EventMenu"/>
+                        <label text="New Person --- Java Event" style="h1"/>
+                        <include-form name="CreatePersonJavaForm" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Seca">
+        <section>
+            <actions>
+                <set field="headerItem" value="seca"/>
+                <set field="titleProperty" value="PageTitleSecaForm"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-menu location="component://practice/widget/PracticeMenus.xml" name="EcaMenu"/>
+                        <label text="New Person --- SECA" style="h1"/>
+                        <include-form name="CreatePerson" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Eeca">
+        <section>
+            <actions>
+                <set field="headerItem" value="eeca"/>
+                <set field="titleProperty" value="PageTitleEecaForm"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-menu location="component://practice/widget/PracticeMenus.xml" name="EcaMenu"/>
+                        <label text="New Person --- EECA" style="h1"/>
+                        <include-form name="CreatePerson" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ServiceGroup">
+        <section>
+            <actions>
+                <set field="headerItem" value="serviceGroup"/>
+                <set field="titleProperty" value="PageTitleServiceGroupForm"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label text="New Person --- Service Group" style="h1"/>
+                        <include-form name="CreatePersonServiceGroup" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Interface">
+        <section>
+            <actions>
+                <set field="headerItem" value="interface"/>
+                <set field="titleProperty" value="PageTitleInterfaceForm"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <label text="New Person --- Inteface" style="h1"/>
+                        <include-form name="CreatePersonInterface" location="component://practice/widget/PracticeForms.xml"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="PersonFormByAjax">
+        <section>
+            <actions>
+                <set field="headerItem" value="ajax"/>
+                <set field="titleProperty" value="PageTitlePracticePersonForm"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/practice/js/PracticeApp.js" global="true"/>
+                <entity-condition entity-name="Person" list="persons"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPracticeDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://practice/webapp/practice/person.ftl"/>
+                                <html-template location="component://practice/webapp/practice/CreatePerson.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="UpdatedPersonList">
+        <section>
+            <actions>
+                <script location="component://practice/webapp/practice/WEB-INF/actions/person.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html>
+                        <html-template location="component://practice/webapp/practice/person.ftl"/>
+                    </html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+</screens>

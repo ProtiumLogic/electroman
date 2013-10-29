@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Practice Services</description>
+    <!-- Party related Services -->
+    <service name="createPracticeParty" default-entity-name="Party" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="createPracticeParty" auth="true">
+        <description>Create a Party</description>
+        <auto-attributes include="pk" mode="OUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="updatePracticeParty" default-entity-name="Party" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="updatePracticeParty" auth="true">
+        <description>Update a Party</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="true"/>
+    </service>
+    <service name="deletePracticeParty" default-entity-name="Party" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="deletePracticeParty" auth="true">
+        <description>Delete a Party</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <!-- Person related Services -->
+    <service name="createPracticePerson" default-entity-name="Person" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="createPracticePerson" auth="true">
+        <description>Create a Person</description>
+        <auto-attributes include="pk" mode="OUT" optional="false"/>
+        <attribute name="salutation" mode="IN" type="String" optional="true"/>
+        <attribute name="firstName" mode="IN" type="String" optional="false"/>
+        <attribute name="middleName" mode="IN" type="String" optional="true"/>
+        <attribute name="lastName" mode="IN" type="String" optional="false"/>
+        <attribute name="suffix" mode="IN" type="String" optional="true"/>
+    </service>
+    <service name="updatePracticePerson" default-entity-name="Person" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="updatePracticePerson" auth="true">
+        <description>Update a person</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+        <attribute name="firstName" mode="IN" type="String" optional="false"/>
+        <attribute name="middleName" mode="IN" type="String" optional="true"/>
+        <attribute name="lastName" mode="IN" type="String" optional="false"/>
+    </service>
+    <service name="deletePracticePerson" default-entity-name="Person" engine="simple"
+            location="component://practice/script/org/hotwax/practice/PracticeServices.xml" invoke="deletePracticePerson" auth="true">
+        <description>Delete a Person</description>
+        <auto-attributes include="pk" mode="IN" optional="false"/>
+    </service>
+    
+    <service name="createPartyRoleVisitor" engine="simple" location="org/hotwax/practice/PracticeServices.xml" invoke="createPartyRoleVisitor" default-entity-name="PartyRole" auth="true">
+        <description>Create a new PartyRole when a party is created</description>
+        <attribute name="partyId" mode="IN" type="String" optional="false"/>
+    </service>
+    
+    <service name="createPartyRoleCustomer" engine="simple" location="org/hotwax/practice/PracticeServices.xml" invoke="createPartyRoleCustomer" default-entity-name="PartyRole" auth="true">
+        <description>Create a new PartyRole when a party is created</description>
+        <attribute name="partyId" mode="IN" type="String" optional="false"/>
+    </service>
+    <service name="createPartyRoleClient" engine="simple" location="org/hotwax/practice/PracticeServices.xml" invoke="createPartyRoleClient" default-entity-name="PartyRole" auth="true">
+        <description>Create a new PartyRole when a party is created</description>
+        <attribute name="partyId" mode="IN" type="String" optional="true"/>
+    </service>
+    
+    <!-- Group service -->
+    <service name="partyGroup" engine="group" auth="true">
+        <description>Creates a party, person and party role Client)</description>
+        <group send-mode="all">
+            <invoke name="createPracticePerson" result-to-context="true"/>
+            <invoke name="createPartyRoleClient" mode="async"/>
+        </group>
+    </service>
+    
+    <!-- Peson Interface -->
+    <service name="createPersonInterface" engine="interface" location="" invoke="">
+        <attribute name="firstName" mode="IN" type="String" optional="false"/>
+        <attribute name="middleName" mode="IN" type="String" optional="true"/>
+        <attribute name="lastName" mode="IN" type="String" optional="false"/>
+        <attribute name="suffix" mode="IN" type="String" optional="true"/>
+    </service>
+    
+    <service name="createPracticePersonInterfaceService" engine="simple" location="org/hotwax/practice/PracticeServices.xml" invoke="createPracticePersonInterfaceService" auth="false">
+        <description>Creates a new Person</description>
+        <implements service="createPersonInterface"/>
+        <attribute name="partyId" mode="OUT" type="String" optional="false"/>   
+        <override name="suffix" optional="false"/>
+    </service>
+    
+    
+</services>

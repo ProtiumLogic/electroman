@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+    <simple-method method-name="createPracticeParty" short-description="create a Party">
+        <make-value entity-name="Party" value-field="newEntity"/>
+        <sequenced-id sequence-name="Party" field="newEntity.partyId"/> <!-- get the next sequenced ID -->
+        <log level="info" message="==========PartyId======${newEntity.partyId}"/>
+        <field-to-result field="newEntity.partyId" result-name="partyId"/>
+        <set-nonpk-fields map="parameters" value-field="newEntity"/>
+        <create-value value-field="newEntity"/>
+    </simple-method>   
+    <simple-method method-name="updatePracticeParty" short-description="update a Party">
+        <entity-one entity-name="Party" value-field="lookedUpValue"/>
+        <set-nonpk-fields map="parameters" value-field="lookedUpValue"/>
+        <store-value value-field="lookedUpValue"/>
+        <log level="info" message="=======Party record updated for partyId=====${lookedUpValue.partyId}"/>
+    </simple-method>
+    <simple-method method-name="deletePracticeParty" short-description="delete a Party">
+        <entity-one entity-name="Party" value-field="lookedUpValue"/>
+        <remove-value value-field="lookedUpValue"/>
+        <log level="info" message="=======Party record deleted for partyId=====${lookedUpValue.partyId}"/>
+    </simple-method>
+    
+    
+    <simple-method method-name="createPracticePerson" short-description="create a Person">
+        <set field="createPartyCtx.partyTypeId" value="PERSON"/>
+        <call-service service-name="createPracticeParty" in-map-name="createPartyCtx">
+            <result-to-field result-name="partyId"/>
+            <result-to-result result-name="partyId"/>
+        </call-service>
+        <log level="info" message="====Party created with partyId for person======${partyId}"/>
+        <make-value entity-name="Person" value-field="newEntity"/>
+        <set field="newEntity.partyId" from-field="partyId"/>
+        <set-nonpk-fields map="parameters" value-field="newEntity"/>
+        <field-to-request field=""/>
+        <request-to-field field=""></request-to-field>
+       <session-to-field field=""></session-to-field>
+        <create-value value-field="newEntity"/>
+    </simple-method>
+    <simple-method method-name="updatePracticePerson" short-description="update a Person">
+        <entity-one entity-name="Person" value-field="lookedUpValue"/>
+        <set-nonpk-fields map="parameters" value-field="lookedUpValue"/>
+        <store-value value-field="lookedUpValue"/>
+        <log level="info" message="=======Person record updated for partyId=====${lookedUpValue.partyId}"/>
+    </simple-method>
+    <simple-method method-name="deletePracticePerson" short-description="Delete a Person">
+        <log level="info" message="==partyId====${parameters.partyId}"/>
+        <entity-one entity-name="Person" value-field="lookedUpValue" auto-field-map="true"/>
+        <remove-value value-field="lookedUpValue"/>
+        <log level="info" message="=======Person record deleted for partyId=====${lookedUpValue.partyId}"/>
+    </simple-method>
+    
+    <simple-method method-name="createPartyRoleVisitor" short-description="Creates PartyRole Visitor when a praty is created" login-required="false">
+        <set field="createPartyRoleCtx.partyId" from-field="parameters.partyId"/>
+        <set field="createPartyRoleCtx.roleTypeId" value="VISITOR"/>
+        <call-service service-name="createPartyRole" in-map-name="createPartyRoleCtx"/>
+        <entity-one entity-name="PartyRole" value-field="partyRole">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="roleTypeId" value="VISITOR"/>
+        </entity-one>
+        <log level="info" message="=========Role : ${partyRole.roleTypeId} set for partyId====${partyRole.partyId}"/>
+    </simple-method>
+    
+    <simple-method method-name="createPartyRoleCustomer" short-description="Creates PartyRole Customer when a praty is created" login-required="false">
+        <set field="createPartyRoleCtx.partyId" from-field="parameters.partyId"/>
+        <set field="createPartyRoleCtx.roleTypeId" value="CUSTOMER"/>
+        <call-service service-name="createPartyRole" in-map-name="createPartyRoleCtx"/>
+        <entity-one entity-name="PartyRole" value-field="partyRole">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="roleTypeId" value="CUSTOMER"/>
+        </entity-one>
+        <log level="info" message="=========Role : ${partyRole.roleTypeId} set for partyId====${partyRole.partyId}"/>
+    </simple-method>
+    
+    <simple-method method-name="createPartyRoleClient" short-description="Creates PartyRole Client when a praty is created" login-required="false">
+        <set field="createPartyRoleCtx.partyId" from-field="parameters.partyId"/>
+        <set field="createPartyRoleCtx.roleTypeId" value="CLIENT"/>
+        <call-service service-name="createPartyRole" in-map-name="createPartyRoleCtx"/>
+        <entity-one entity-name="PartyRole" value-field="partyRole">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="roleTypeId" value="CLIENT"/>
+        </entity-one>
+        <log level="info" message="=========Role : ${partyRole.roleTypeId} set for partyId====${partyRole.partyId}"/>
+    </simple-method>
+    
+    <simple-method method-name="createPracticePersonInterfaceService" short-description="create a Person">
+        <set field="createPartyCtx.partyTypeId" value="PERSON"/>
+        <call-service service-name="createPracticeParty" in-map-name="createPartyCtx">
+            <result-to-field result-name="partyId"/>
+            <result-to-result result-name="partyId"/>
+        </call-service>
+        <log level="info" message="====Party created with partyId for person======${partyId}"/>
+        <make-value entity-name="Person" value-field="newEntity"/>
+        <set field="newEntity.partyId" from-field="partyId"/>
+        <set-nonpk-fields map="parameters" value-field="newEntity"/>
+        <create-value value-field="newEntity"/>
+    </simple-method>
+</simple-methods>

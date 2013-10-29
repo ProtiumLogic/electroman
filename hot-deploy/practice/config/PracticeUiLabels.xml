@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Practice component properties -->
+    <property key="PracticeApplication">
+        <value xml:lang="en">Hello and welcome to Jaison's Practice Application</value>
+    </property>
+    <property key="PracticeCompanyName">
+        <value xml:lang="en">Jaison-OFBiz: Practice</value>
+    </property>
+    <!-- Page Titles -->
+    <property key="PageTitlePracticeMain">
+        <value xml:lang="en">Jaison-Practice Main</value>
+    </property>
+    <property key="PageTitlePracticePerson">
+        <value xml:lang="en">Jaison-Practice Person</value>
+    </property>
+    <property key="PageTitlePracticePersonForm">
+        <value xml:lang="en">Practice Person Form</value>
+    </property>
+    <property key="PageTitleEventForms">
+        <value xml:lang="en">Practice Event Form</value>
+    </property>
+    <property key="PageTitleSimpleEventForms">
+        <value xml:lang="en">Practice Simple Event Form</value>
+    </property>
+    <property key="PageTitleJavaEventForms">
+        <value xml:lang="en">Practice Java Event Form</value>
+    </property>
+    <property key="PracticeFirstNameMissingError">
+        <value xml:lang="en">First Name is missing</value>
+    </property>
+    <property key="PracticeLastNameIsMissingError">
+        <value xml:lang="en">Last Name is missing</value>
+    </property>
+    
+</resource>
